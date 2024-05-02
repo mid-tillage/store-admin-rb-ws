@@ -39,6 +39,41 @@ docker run -p 3040:3040 -p 5432:5432 -e SERVER_PORT="3040" -e DB_HOST="host.dock
 
 The table below shows resource usage metrics for the `store-admin-rb-ws` Docker container.
 
-| REPOSITORY           | TAG    | IMAGE ID      | CREATED      | SIZE    |
-|----------------------|--------|---------------|--------------|---------|
-| store-admin-rb-ws    | latest | 70527f9a295b  | 2 hours ago  | 336.5MB |
+| REPOSITORY           | TAG    | IMAGE ID      | CREATED       | SIZE     |
+|----------------------|--------|---------------|---------------|----------|
+| store-admin-rb-ws    | latest | f8c65d0e117c  | 1 second ago  | 485.37MB |
+
+## Kubernetes
+
+```bash
+# Start Minikube to create a local Kubernetes cluster
+minikube start
+
+# Configure the shell to use Minikube's Docker daemon
+& minikube -p minikube docker-env --shell powershell | Invoke-Expression
+
+# Build Docker image with a specific tag and Dockerfile
+docker build -t store-admin-rb-ws:latest -f Dockerfile .
+
+# Apply Kubernetes configuration to create a pod
+kubectl apply -f kubernetes/pod.yaml
+
+# Port-forward to access the Kubernetes pod locally
+kubectl port-forward store-admin-rb-ws-pod 3040:3040
+```
+
+### Pod resource usage metrics
+
+The table below shows resource usage metrics for the `store-admin-rb-ws-pod` pod.
+
+```bash
+minikube addons enable metrics-server
+kubectl top pods
+```
+
+**Note:** If you just enabled the metrics-server addon, remember to wait a couple of seconds before running the `kubectl top pods` command.
+
+
+| NAME                   | CPU(cores) | MEMORY(bytes) |
+|------------------------|------------|---------------|
+| store-admin-rb-ws-pod  | 11m        | 26Mi          |
