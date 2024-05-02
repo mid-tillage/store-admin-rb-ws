@@ -1,0 +1,52 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    base64 (0.2.0)
+    bigdecimal (3.1.7)
+    connection_pool (2.4.1)
+    csv (3.3.0)
+    dotenv (3.1.1)
+    httparty (0.22.0)
+      csv
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
+    mini_mime (1.1.5)
+    multi_xml (0.7.0)
+      bigdecimal (~> 3.1)
+    mustermann (3.0.0)
+      ruby2_keywords (~> 0.0.1)
+    pg (1.5.6)
+    pg (1.5.6-x64-mingw-ucrt)
+    rack (3.0.10)
+    rack-protection (4.0.0)
+      base64 (>= 0.1.0)
+      rack (>= 3.0.0, < 4)
+    rack-session (2.0.0)
+      rack (>= 3.0.0)
+    rackup (2.1.0)
+      rack (>= 3)
+      webrick (~> 1.8)
+    ruby2_keywords (0.0.5)
+    sinatra (4.0.0)
+      mustermann (~> 3.0)
+      rack (>= 3.0.0, < 4)
+      rack-protection (= 4.0.0)
+      rack-session (>= 2.0.0, < 3)
+      tilt (~> 2.0)
+    tilt (2.3.0)
+    webrick (1.8.1)
+
+PLATFORMS
+  x64-mingw-ucrt
+  x86_64-linux
+
+DEPENDENCIES
+  connection_pool
+  dotenv
+  httparty
+  pg
+  rackup (~> 2.1)
+  sinatra
+
+BUNDLED WITH
+   2.4.19
